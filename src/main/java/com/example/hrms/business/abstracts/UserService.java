@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.example.hrms.core.utilities.results.DataResult;
 import com.example.hrms.core.utilities.results.Result;
-import com.example.hrms.entities.concretes.JobTitle;
+import com.example.hrms.entities.concretes.User;
 
-public interface JobTitleService {
-	DataResult<List<JobTitle>> getAll();
-	Result add(JobTitle jobTitle);
+public interface UserService {
+	DataResult<List<User>> getAll();
+	Result add(User user);
 }

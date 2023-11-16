@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.hrms.business.abstracts.JobTitleService;
+import com.example.hrms.core.utilities.results.DataResult;
+import com.example.hrms.core.utilities.results.Result;
+import com.example.hrms.core.utilities.results.SuccessDataResult;
+import com.example.hrms.core.utilities.results.SuccessResult;
 import com.example.hrms.dataAccess.abstracts.JobTitleDao;
 import com.example.hrms.entities.concretes.JobTitle;
 
@@ -21,8 +25,14 @@ public class JobTitleManager implements JobTitleService {
 	}
 
 	@Override
-	public List<JobTitle> getAll() {
-		return this.jobTitleDao.findAll();
+	public DataResult<List<JobTitle>> getAll() {
+		return new SuccessDataResult<List<JobTitle>>(this.jobTitleDao.findAll(),"iş pozisyonları listelendi");
+	}
+
+	@Override
+	public Result add(JobTitle jobTitle) {
+		this.jobTitleDao.save(jobTitle);
+		return new SuccessResult("iş pozisyonu eklendi");
 	}
 
 }
